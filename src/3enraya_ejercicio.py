@@ -8,7 +8,7 @@ FICHAS = (' ', 'X', 'O')
 #TODO: Matriz 3x3 con los conjuntos de posiciones permitidas desde cada par fila, columna del tablero:
 # Una tupla que contendrá 3 tuplas (filas), cada una tendrá 3 conjuntos (columnas), 
 # donde cada elemento de un conjunto es una posición accesible en forma de tupla (fila, columna)
-POSICIONES_PERMITIDAS = ???
+POSICIONES_PERMITIDAS = ((0,0,0), (0,0,0), (0,0,0))
 
 
 def borrarConsola():
@@ -74,11 +74,21 @@ def verificar_ganador(tablero) -> tuple:
     # TODO: Verificar filas y columnas
     # Si el contenido de las celdas de una fila o columna es igual y distinto de cero
     # retornar una de las celdas (jugador) y True
-    ???
+    for i in range(3):
+        if tablero[i][0] == tablero[i][1] == tablero[i][2] != 0:
+            return tablero[i][0], True
+        
+        if tablero[0][i] == tablero[1][i] == tablero [2][i] != 0:
+            return tablero[0][i], True
 
     # TODO: Verificar diagonales
     # Igual en las diagonales...
-    ???
+    for i in range(3):
+        if tablero[0][0] == tablero[1][1] == tablero[2][2] != 0:
+            return tablero[i][0], True
+        
+        if tablero[0][0] == tablero[1][1] == tablero [2][1] != 0:
+            return tablero[0][i], True
 
     # Si no retorno nada, quiere decir que aún no ganó nadie...
     return None, False
@@ -123,7 +133,10 @@ def comprobar_casilla(tablero: tuple,
     # ronda > 3: mover ficha => 
     #   si solo ha seleccionado la posición de la ficha que va a mover => comprobar si en dicha posición existe una ficha del jugador
     #   si seleccionó también la posición dónde mover => comprobar si la nueva posición es accesible desde su posición anterior y que la posición destino esté vacía.
-    ???
+    if ronda <= 3:
+        colocar_ficha()
+    
+    if 
 
 
 def colocar_ficha(tablero: tuple, jugador: int, ronda: int):
@@ -184,6 +197,7 @@ def jugar(tablero: tuple):
     while not hay_ganador:
 
         turno = cambiar_turno(turno)
+        
         if turno == 1:
             ronda += 1
 
